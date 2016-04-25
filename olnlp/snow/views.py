@@ -1,16 +1,32 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 import json
 from snownlp import SnowNLP
 # Create your views here.
 
+@csrf_exempt
 def index(request):
 	message = {}
-	if not request.GET.has_key('text'):
+	print request.method
+	if request.method == 'GET':
+		message = construct_message(request.GET,'text')
+	elif request.method == 'POST':
+		message = construct_message(json.loads(request.body),'text')
+	else:
+		print 'invalid request'
+	return HttpResponse(json.dumps(message))
+
+
+def construct_message(parameter,key):
+	message = {}
+	print type(parameter)
+	if not parameter.has_key(key):
 		message['Code'] = '400'
 		message['Message'] = 'invalid request'
 	else:
-		text = request.GET['text']
+		text = parameter['text']
+		print '======================'
 		if text.strip() == '':
 			message['Code'] = '406'
 			message['Message'] = 'empty text'
@@ -20,5 +36,5 @@ def index(request):
 			print score
 			message['Code'] = '200'
 			message['Message'] = score
+	return message
 
-	return HttpResponse(json.dumps(message))
