@@ -13,9 +13,9 @@ python manage.py runserver 0.0.0.0:8000
 
 ##API
 chinese sentiment: 
-	POST -- http://ip:port/snow/ {'text':text}
+	POST -- http://ip:port/snow/ {'text':text}  
 image signature:
-	POST -- http://ip:port/image/ {'image':url}
+	POST -- http://ip:port/image/ {'image':url}  
 
 ##Notice
 For GET method, there is so much limitation about the text such as symbols.
