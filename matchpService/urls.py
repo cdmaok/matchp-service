@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^snow/', include('snow.urls')),
     url(r'^image/', include('image.urls')),
+    url(r'^hist/', include('hist.urls')),
 ]

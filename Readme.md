@@ -4,6 +4,9 @@ this program is to provide several basic service with django
 ## Available service
 1. chinese sentiment(using snownlp) 
 2. signature for image(using imagehash)
+3. image\'s color histogram
+4. image ocr service(TODO)
+5. text speech act classification(TODO)
 
 
 ## usage
@@ -16,6 +19,8 @@ chinese sentiment:
 	POST -- http://ip:port/snow/ {'text':text}  
 image signature:
 	POST -- http://ip:port/image/ {'image':url}  
+image histgram:
+	POST -- http://ip:port/hist/ {'image':url}
 
 ##Notice
 For GET method, there is so much limitation about the text such as symbols.
