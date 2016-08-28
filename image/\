@@ -44,11 +44,11 @@ def index(request):
 
 
 
-def construct_message(code,mess = None,hist = None):
+def construct_message(code,message = None,hist = None):
 	message = {}
 	message['Code'] = code
 	if code != 200:
-		message['Message'] = str(mess)
+		message['Message'] = message
 	else:
 		message['Message'] = hist
 	return message
@@ -64,7 +64,7 @@ def get_image_byte(body):
 	return image
 
 def get_sign(image):
-	return str(imagehash.dhash(image))
+	return imagehash.dhash(image)
 
 
 
@@ -80,7 +80,7 @@ if __name__ == "__main__":
 	url = "http://ww2.sinaimg.cn/mw690/a1ab8e59jw1f59p38thd0j20c83qv7va.jpg"
 	image = get_image_url(url)
 	sign = get_sign(image)
-	print type(sign),sign
+	print sign
 	
 
 

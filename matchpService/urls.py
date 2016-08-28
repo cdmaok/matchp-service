@@ -21,4 +21,6 @@ urlpatterns = [
     url(r'^snow/', include('snow.urls')),
     url(r'^image/', include('image.urls')),
     url(r'^hist/', include('hist.urls')),
+    url(r'^ocr/', include('ocr.urls')),
+    url(r'^sar/', include('sar.urls')),
 ]
